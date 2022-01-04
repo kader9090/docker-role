@@ -1,0 +1,10 @@
+- name: "Install docker"
+  hosts: prod
+  become: true
+  vars:
+  vars_files:
+    - ansible_user: ubuntu
+      ansible_password: ubuntu
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+  roles:
+    - docker_role

@@ -1,0 +1,5 @@
+galaxy_info:
+  role_name: docker_role
+  author: Abdelkader
+  description: Ansible docker role
+  company: Abdelkader

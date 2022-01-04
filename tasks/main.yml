@@ -1,0 +1,9 @@
+---
+# tasks file for docker_role
+- name: "Copy Script files"
+  template:
+    src: install_docker.sh.j2
+    dest: /home/{{ ansible_user }}/install_docker.sh
+
+- name: "Install docker"
+  command: "sh /home/{{ ansible_user }}/install_docker.sh"

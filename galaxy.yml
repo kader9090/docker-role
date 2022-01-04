@@ -1,0 +1,11 @@
+namespace: community
+name: docker-role
+version: 20.10.12
+readme: README.md
+authors:
+  - RAHMANI Abdelkader
+description: Install docker
+license_file: COPYING
+tags:
+  - v1
+repository: https://github.com/kader9090/docker-role.git
