@@ -4,6 +4,10 @@
   template:
     src: install_docker.sh.j2
     dest: /home/{{ ansible_user }}/install_docker.sh
+- name: "Install docker"
+  command: "sh /home/{{ ansible_user }}/install_docker.sh"
+  when: ansible_docker0 is undefined
+
 - name: download pip script 
   get_url:
     url: https://bootstrap.pypa.io/pip/2.7/get-pip.py        
@@ -14,7 +18,4 @@
 
 - name: Install docker python      
   pip: name=docker-py
-  when: ansible_distribution == "CentOS" 
-- name: "Install docker"
-  command: "sh /home/{{ ansible_user }}/install_docker.sh"
-  when: ansible_docker0 is undefined
+  when: ansible_distribution == "CentOS"
