@@ -8,14 +8,24 @@
   command: "sh /home/{{ ansible_user }}/install_docker.sh"
   when: ansible_docker0 is undefined
 
-- name: download pip script 
-  get_url:
-    url: https://bootstrap.pypa.io/pip/2.7/get-pip.py        
-    dest: /tmp/get-pip.py    
-- name: install python-pip      
-  command: python2.7 /tmp/get-pip.py
-  when: ansible_distribution == "CentOS"  
+- name : "Install epel-releases"
+  yum:
+    name: epel-release
+    state: present
+  when: ansible_distribution == "CentOS"
 
-- name: Install docker python      
-  pip: name=docker-py
+- name: download pip script
+  get_url:
+    url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
+    dest: /tmp/get-pip.py
+  when: ansible_distribution == "CentOS"
+
+- name: "install python-pip"
+  command: python2.7 /tmp/get-pip.py
+  when: ansible_distribution == "CentOS"
+
+- name: "Install docker python"
+  pip: 
+    name: docker-py
+    state: present
   when: ansible_distribution == "CentOS"
