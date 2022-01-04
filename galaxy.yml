@@ -9,3 +9,7 @@ license_file: COPYING
 tags:
   - v1
 repository: https://github.com/kader9090/docker-role.git
+documentation: https://github.com/kader9090/docker-role.git
+homepage: https://github.com/kader9090/docker-role.git
+issues: https://github.com/kader9090/docker-role.git
+

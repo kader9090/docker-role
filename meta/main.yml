@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: docker_role
+  role_name: docker-role
   author: Abdelkader
   description: Ansible docker role
   company: Abdelkader

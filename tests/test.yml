@@ -7,4 +7,4 @@
       ansible_password: ubuntu
       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   roles:
-    - docker_role
+    - docker-role

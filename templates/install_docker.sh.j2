@@ -13,19 +13,14 @@ sudo usermod -aG docker {{ ansible_user }}
 sudo apt-get install python3-pip
 sudo apt-get install docker-py
 
-{% elif ansible_distribution == "Centos" %}
+{% elif ansible_distribution == "CentOS" %}
 
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-
-sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum install docker-ce docker-ce-cli containerd.io -y
 sudo systemctl start docker
 sudo usermod -aG docker {{ ansible_user }}
-yum install curl -y
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py 
-python2.7 get-pip.py
-sudo pip install docker-py
+
 {% else %}
    echo 'Distribution pas prise en charge'
 {% endif %}
