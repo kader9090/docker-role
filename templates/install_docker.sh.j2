@@ -9,7 +9,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-sudo usermod -aG docker $USER
+sudo usermod -aG docker {{ ansible_user }}
 sudo apt-get install python3-pip
 sudo apt-get install docker-py
 
@@ -21,9 +21,11 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 
 sudo yum install docker-ce docker-ce-cli containerd.io
 sudo systemctl start docker
-sudo usermod -aG docker $USER
-sudo apt-get install python3-pip
-sudo apt-get install docker-py
+sudo usermod -aG docker {{ ansible_user }}
+yum install curl -y
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py 
+python2.7 get-pip.py
+sudo pip install docker-py
 {% else %}
    echo 'Distribution pas prise en charge'
 {% endif %}
